@@ -1,4 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-Home
-{% endblock content %}
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="text-center text-success mt-3 mb-3">All Animals</h2>
+			<!-- Slider main container -->
+
+			<div class="swiper-container">
+				<!-- Swiper -->
+				<div class="swiper-wrapper">
+					{% for animal in animals %}
+					<div class="swiper-slide">
+						<div class="card" style="width: 18rem;">
+							<img src="{{animal.image.url}}" class="card-img-top" alt="..." height="250" width="220">
+							<div class="card-body bg-success">
+								<center><h5 class="card-title text-light">{{animal.name}}</h5>
+									<small><p class="card-text text-light">{{animal.description}}</p></small></center>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+	{% endblock content %}
