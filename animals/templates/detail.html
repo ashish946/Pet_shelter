@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 mt-5">
+			<img src="{{ animal.image.url }}" class="mx-auto d-block" height="600" width="570" alt="{{ animal.image.url }}">
+		</div>
+
+		<div class="col-md-5 ml-3 mt-5">
+			<h5 class="mt-5 display-4 text-success">{{ animal.name }}
+				{% if animal.gender == 'Male' %}
+				<i class="fas fa-mars text-primary"> </i>
+				{% elif animal.gender == 'Female' %}
+				<i class="fas fa-venus text-danger"> </i>
+				{% endif %}
+			</h5>
+			<p>{{animal.description}}</p>
+			<p>
+				<span class="text-success">Difficulty: </span>
+				{% if animal.difficulty == 1 %}
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw"></i>
+				<i class="fas fa-paw"></i>
+				<i class="fas fa-paw"></i>
+				<i class="fas fa-paw"></i>
+				{% endif %}
+				{% if animal.difficulty == 2 %}
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw"></i>
+				<i class="fas fa-paw"></i>
+				<i class="fas fa-paw"></i>
+				{% endif %}
+				{% if animal.difficulty == 3 %}
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw"></i>
+				<i class="fas fa-paw"></i>
+				{% endif %}
+				{% if animal.difficulty == 4 %}
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw"></i>
+				{% endif %}
+				{% if animal.difficulty == 4 %}
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				<i class="fas fa-paw text-success"></i>
+				{% endif %}
+
+			</p>
+
+			<p><span class="text-success">Age: </span>{{animal.age}}</p>
+			<p><span class="text-success">Sheltered: </span>{{animal.Sheltered}}</p>
+
+			<div class="swiper-container">
+				<!-- Swiper -->
+				<div class="swiper-wrapper">
+					{% for animal in animals %}
+					<div class="swiper-slide">
+						<a href="../{{animal.id}}">
+							<div class="card" style="width: 10rem;">
+								<img src="{{animal.image.url}}" class="card-img-top" alt="{{animal.image.url}}" height="150">
+								</div>
+							</a>
+						</div>
+						{% endfor %}
+
+					</div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-next text-success"></div>
+					<div class="swiper-button-prev text-success"></div>
+
+				</div>
+
+		</div>
+	</div>
+	{% endblock content %}

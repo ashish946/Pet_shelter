@@ -5,33 +5,160 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h2 class="text-center text-success mt-3 mb-3">All Animals</h2>
+			<h2 class="text-center text-success mt-3 mb-3">All Animals <i class="fas fa-paw"></i></h2>
 			<!-- Slider main container -->
-
 			<div class="swiper-container">
 				<!-- Swiper -->
 				<div class="swiper-wrapper">
 					{% for animal in animals %}
 					<div class="swiper-slide">
-						<div class="card" style="width: 18rem;">
-							<img src="{{animal.image.url}}" class="card-img-top" alt="..." height="250" width="220">
-							<div class="card-body bg-success">
-								<center><h5 class="card-title text-light">{{animal.name}}</h5>
-									<small><p class="card-text text-light">{{animal.description}}</p></small></center>
+						<a href="animal/{{animal.id}}">
+							<div class="card" style="width: 18rem;">
+								<img src="{{animal.image.url}}" class="card-img-top" alt="..." height="320" width="300">
+								<div class="card-body bg-success">
+									<center><h5 class="card-title text-light">{{animal.name}}</h5>
+										<small><p class="card-text text-light">{{animal.description}}</p></small></center>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
 						{% endfor %}
 
 					</div>
 					<!-- Add Arrows -->
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next text-success"></div>
+					<div class="swiper-button-prev text-success"></div>
 
 				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<div class="col-md-6">
+				<h4 class="text-center text-success mt-3 mb-3"><i class="fas fa-cat"></i> Cats</h4>
+				<table class="table table-striped text-center">
+					<thead class="table-success">
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Gender</th>
+							<th scope="col">Sheltered</th>
+						</tr>
+					</thead>
+					<tbody class="bg-success text-light">
+						{% for cat in cats %}
+						<tr>
+							<td>{{cat.name}}</td>
+							<td>{{cat.gender}}</td>
+							<td>{{cat.Sheltered}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				{% if cats.has_other_pages %}
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						{% if cats.has_previous %}
+						<li class="page-item">
+							<a class="page-link text-light bg-success" href="?catpage={{cats.previous_page_number}}" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						{% else %}
+						<li class="page-item disabled"></li>
+						{% endif %}
+						{% for pages in cats.paginator.page_range %}
+						<br>
+						{% if cats.number == pages %}
+						<li class="page-item">
+							<a class="page-link text-success" href="?catpage={{ pages }}">{{pages}}</a>
+						</li>
+						{% else %}
+						<li class="page-item">
+							<a class="page-link text-light bg-success" href="?catpage={{ pages }}" aria-label="Next">
+								{{pages}}
+							</a>
+						</li>
+						{% endif %}
+						{% endfor %}
+
+						{% if cats.has_next %}
+						<li class="page-item">
+							<a class="page-link text-light bg-success" href="?catpage={{cats.next_page_number}}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+						{% endif %}
+
+					</ul>
+				</nav>
+				{% endif %}
+
+			</div>
+
+			<div class="col-md-6">
+				<h4 class="text-center text-success mt-3 mb-3"><i class="fas fa-dog"></i> Dogs</h4>
+				<table class="table table-striped text-center">
+					<thead class="table-success">
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Gender</th>
+							<th scope="col">Sheltered</th>
+						</tr>
+					</thead>
+					<tbody class="bg-success text-light">
+						{% for dog in dogs %}
+						<tr>
+							<td>{{dog.name}}</td>
+							<td>{{dog.gender}}</td>
+							<td>{{dog.Sheltered}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				{% if dogs.has_other_pages %}
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						{% if dogs.has_previous %}
+						<li class="page-item">
+							<a class="page-link text-light bg-success" href="?dogpage={{dogs.previous_page_number}}" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						{% else %}
+						<li class="page-item disabled"></li>
+						{% endif %}
+						{% for pages in dogs.paginator.page_range %}
+						<br>
+						{% if dogs.number == pages %}
+						<li class="page-item">
+							<a class="page-link text-success" href="?dogpage={{ pages }}">{{pages}}</a>
+						</li>
+						{% else %}
+						<li class="page-item">
+							<a class="page-link text-light bg-success" href="?dogpage={{ pages }}" aria-label="Next">
+								{{pages}}
+							</a>
+						</li>
+						{% endif %}
+						{% endfor %}
+
+						{% if dogs.has_next %}
+						<li class="page-item">
+							<a class="page-link text-light bg-success" href="?dogpage={{dogs.next_page_number}}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+						{% endif %}
+
+					</ul>
+				</nav>
+				{% endif %}
 
 
 			</div>
+
 		</div>
 	</div>
 

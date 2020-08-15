@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+  <!-- Fontawesome -->
+  <script src="https://kit.fontawesome.com/d10ec65516.js" crossorigin="anonymous"></script>
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,14 +15,17 @@
   <!-- Swiper css -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <title>Hello, world!</title>
+  <title>Animals</title>
   <style type="text/css">
-
+    .container {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-    <a class="navbar-brand" href="{% url 'home' %}">Animal Shelter</a>
+    <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-dove"></i> Animal Shelter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,18 +62,25 @@
   <!-- Initialze swipper -->
   <script>
     var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      slidesPerGroup: 3,
       loop: true,
       loopFillGroupWithBlank: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
       },
       autoplay: {
         delay: 2000,
